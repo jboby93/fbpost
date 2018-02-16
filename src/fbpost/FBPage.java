@@ -2,9 +2,7 @@ package fbpost;
 
 /**
  * FBPage.java - connector to the bot's Facebook page; handles making posts and retrieving post info
- *
- * added: 3/18/2017 - mostly copied from tpb98
- * last updated: 9/3/2017 for FBPost
+ * v2.0 - 2-15-2018
  */
 
 import java.awt.List;
