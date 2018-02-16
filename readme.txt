@@ -93,6 +93,10 @@ arguments and actions:
 
 examples:
 
-make a post and share it to another page:
-> ./run.sh -auth [authfile1] -post --text "post on page 1"
+make a post
+> ./run.sh -auth [authfile] -post --text "hello world!"
 < 1234567890987654321 [the id of the created post]
+
+get posts on page w/ id 12345 made in december 2017
+> ./run.sh -auth [authfile] -postsreport --page 12345 --start 12-1-2017 --end 12-31-2017 --json
+< [json listing of posts found in this range]
