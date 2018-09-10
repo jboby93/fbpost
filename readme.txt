@@ -1,4 +1,4 @@
-fbpost v2.0 - a simple connector for facebook functions
+fbpost v2.0a - a simple connector for facebook functions
 author: jboby93
 
 depends on: facebook4j, json-simple
@@ -14,7 +14,7 @@ usage:
 
 pages.lst
 =========================
-create one of these file to specify shorthand aliases for your pages; each line of the file should be of the form
+create one of these files in the root fbpost directory to specify shorthand aliases for your pages; each line of the file should be of the form
 	[alias]=[page id]
 
 fbpost loads this on each run before processing arguments, so instead of having to remember page ids you can use your own aliases instead!
@@ -48,9 +48,12 @@ arguments and actions:
 
 	returns: the id of the created post
 
--comment --page [page] --postid [post id] (--text/--file [text or filename containing the text to post]) (--image [imagefile])
+-comment --page [page id/alias] --postid [post id] (--text/--file [text or filename containing the text to post]) (--image [imagefile])
 	comments on the specified post with the given text
 
+	to specify the page, you can either supply your facebook page id, or use your alias if one is defined in pages.lst.
+	(not sure what your page id is?  go here -> https://findmyfbid.com/)
+	
 	all of the variants of the post action arguments apply here as well, as long as the page and post ids are given.
 
 	so an action string to post an image comment with text from foo.txt would be
@@ -63,18 +66,18 @@ arguments and actions:
 
 	returns: id of the created comment
 
--share --url [url] (--text/--file [text/file]) --to [page1] --as [authfile1] ... --to [pageN] --as [authfileN]
+-share --url [url] (--text/--file [text/file]) --to [page/alias1] --as [authfile1] ... --to [page/aliasN] --as [authfileN]
 	shares a link (with optional text or text from file) to one or more pages, given their ids and authfiles
 
 	returns: listing of all created posts
 
--getpost --page [page] --postid [post id] (--json)
+-getpost --page [page id/alias] --postid [post id] (--json)
 	gets info about a single post, optionally returning a json object instead of printing the info to stdout
 
--getreacts --page [page] --postid [post id] (--json)
+-getreacts --page [page id/alias] --postid [post id] (--json)
 	gets reactions from a post
 
--getcomments --page [page] --post [post id] (--json)
+-getcomments --page [page id/alias] --post [post id] (--json)
 	gets comments from a post
 
 -postsreport --page [page] --start [mm-dd-yyyy] --end [mm-dd-yyyy] (--html) (--json) (--saveas [file])
@@ -100,3 +103,6 @@ make a post
 get posts on page w/ id 12345 made in december 2017
 > ./run.sh -auth [authfile] -postsreport --page 12345 --start 12-1-2017 --end 12-31-2017 --json
 < [json listing of posts found in this range]
+
+changes:
+2.0a - uploaded fix for image comments
