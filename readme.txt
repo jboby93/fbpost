@@ -12,6 +12,8 @@ usage:
 =========================
 ./run.sh [args]
 
+for a production environment or when being called from other programs, the prod.sh script can be used instead. the only difference between the two is that prod.sh switches the current working directory to its own location, then back after fbpost has completed.
+
 pages.lst
 =========================
 create one of these files in the root fbpost directory to specify shorthand aliases for your pages; each line of the file should be of the form
