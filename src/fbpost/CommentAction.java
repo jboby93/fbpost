@@ -16,7 +16,7 @@ public class CommentAction extends FBAction {
 		if(this.getParamStr("pageid") == null) return false;
 		if(this.getParamStr("postid") == null) return false;
 
-		return (this.getText() != null);
+		return (this.getText() != null || this.params.containsKey("image"));
 	}
 
 	public int execute(FBPage page) {
